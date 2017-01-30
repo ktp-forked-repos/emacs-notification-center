@@ -1,4 +1,5 @@
 (require 'nc-timeline)
+(require 'nc-auth)
 
 ;; チャンネルの概念で SNS を横断して通知を一括管理
 ;;
@@ -70,15 +71,5 @@
 ;;    :timestamp "0000-00-00 00:00:00" ; (Tが入ってもok)
 ;;    ;; サービス特有のデータ
 ;;    :entity    ((in_reply_to_status_id . 100) ....))
-
-;; * utilities
-
-(defun notification-center-make-button (str action &rest props)
-  "Make a string button and return it. This is NOT a destructive
-function unlike `make-text-button'."
-  (declare (indent 1))
-  (let ((str (copy-sequence str)))
-    (apply 'make-text-button str 0 'action action props)
-    str))
 
 (provide 'notification-center)
