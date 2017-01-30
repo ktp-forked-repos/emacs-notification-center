@@ -1,14 +1,12 @@
 ;; + utility fns
 
 ;; API
-(defconst nc-timeline/-fontawesome-available-p
-  (member "FontAwesome" (font-family-list))
-  "Non-nil iff `FontAwesome' font is available.")
+(defconst nc-timeline/-fontawesome-available-p (member "FontAwesome" (font-family-list)))
 (defun nc-timeline/fontawesome-icon (codepoint fallback-str &optional face)
-  "Return a string of Fontawesome icon, or FALLBACK-STR if
-Fontawesome is not installed. Returned string will be propertized
-with face FACE (list like `put-text-property' is accepted too),
-and should not be propertized with `face' property later."
+  "Return a string of a FontAwesome icon, or FALLBACK-STR if
+FontAwesome font is not installed. Returned string will be
+propertized with face FACE (either a face symbol or a plist), and
+its `face' property should not be modified later."
   (cond (nc-timeline/-fontawesome-available-p
          (propertize (char-to-string codepoint) 'face
                      (cond ((null face) '(:family "FontAwesome"))
